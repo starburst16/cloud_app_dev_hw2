@@ -14,7 +14,7 @@ jobs:
       - name: Check if add.py exists in PR
         id: check_file
         run: |
-          if [-e add.py]; then
+          if [ -e add.py ]; then
             echo "exists=true" >> $GITHUB_ENV
           else
             echo "exists=false" >> $GITHUB_ENV
