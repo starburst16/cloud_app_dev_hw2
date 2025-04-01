@@ -1,1 +1,1 @@
-# cloud_app_dev_hw2
+This is a simple repo for assignment.
