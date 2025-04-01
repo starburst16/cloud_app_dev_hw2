@@ -11,9 +11,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Fetch full history
-        run: git fetch --prune --unshallow
-
       - name: Check if add.py exists in PR
         id: check_file
         run: |
