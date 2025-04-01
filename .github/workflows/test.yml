@@ -14,8 +14,7 @@ jobs:
       - name: Check if add.py exists in PR
         id: check_file
         run: |
-          git fetch origin main
-          if git diff --name-only HEAD^ HEAD | grep -q "add.py"; then
+          if git diff --name-only ${{ github.event.pull_request.base.sha }} HEAD | grep -q "add.py"; then
             echo "exists=true" >> $GITHUB_ENV
           else
             echo "exists=false" >> $GITHUB_ENV
@@ -32,6 +31,8 @@ jobs:
         if: env.exists == 'true'
         run: |
           if [ "$result" -ne 14 ]; then
-            echo "add.py did not return 14, failing the job."
+            echo "❌ add.py did not return 14, failing the job."
             exit 1
+          else
+            echo "✅ add.py returned 14, test passed!"
           fi
